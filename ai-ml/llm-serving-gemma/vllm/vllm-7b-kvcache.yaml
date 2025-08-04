@@ -38,8 +38,10 @@ spec:
         command:
         - python3
         - -m
-        - vllm.entrypoints.api_server
+        - vllm.entrypoints.openai.api_server
         env:
+        - name: LD_LIBRARY_PATH
+          value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64        
         - name: MODEL_ID
           value: google/gemma-7b
         - name: HUGGING_FACE_HUB_TOKEN
@@ -52,12 +54,12 @@ spec:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 25Gi
+            ephemeral-storage: 30Gi
             memory: 25Gi
             nvidia.com/gpu: 1
           requests:
             cpu: "2"
-            ephemeral-storage: 25Gi
+            ephemeral-storage: 30Gi
             memory: 25Gi
             nvidia.com/gpu: 1
         volumeMounts:

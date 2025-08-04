@@ -37,18 +37,20 @@ spec:
           requests:
             cpu: "2"
             memory: "25Gi"
-            ephemeral-storage: "25Gi"
+            ephemeral-storage: "30Gi"
             nvidia.com/gpu: 2
           limits:
             cpu: "2"
             memory: "25Gi"
-            ephemeral-storage: "25Gi"
+            ephemeral-storage: "30Gi"
             nvidia.com/gpu: 2
-        command: ["python3", "-m", "vllm.entrypoints.api_server"]
+        command: ["python3", "-m", "vllm.entrypoints.openai.api_server"]
         args:
         - --model=$(MODEL_ID)
         - --tensor-parallel-size=2
         env:
+        - name: LD_LIBRARY_PATH
+          value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64
         - name: MODEL_ID
           value: google/gemma-1.1-7b-it
         - name: HUGGING_FACE_HUB_TOKEN

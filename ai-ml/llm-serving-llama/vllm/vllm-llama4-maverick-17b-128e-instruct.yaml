@@ -46,7 +46,7 @@ spec:
         args:
         - python3
         - -m
-        - vllm.entrypoints.api_server
+        - vllm.entrypoints.openai.api_server
         - --host=0.0.0.0
         - --port=7080
         - --swap-space=16
@@ -59,6 +59,8 @@ spec:
         - --model=meta-llama/Llama-4-Maverick-17B-128E-Instruct
         - --tensor-parallel-size=8
         env:
+        - name: LD_LIBRARY_PATH
+          value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64
         - name: MODEL_ID
           value: 'meta-llama/Llama-4-Maverick-17B-128E-Instruct'
         - name: HUGGING_FACE_HUB_TOKEN

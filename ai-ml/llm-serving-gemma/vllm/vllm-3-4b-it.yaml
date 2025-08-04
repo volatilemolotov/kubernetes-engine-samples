@@ -53,6 +53,8 @@ spec:
         - --max-model-len=32768
         - --max-num-seqs=4
         env:
+        - name: LD_LIBRARY_PATH
+          value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64
         - name: MODEL_ID
           value: google/gemma-3-4b-it
         - name: HUGGING_FACE_HUB_TOKEN
