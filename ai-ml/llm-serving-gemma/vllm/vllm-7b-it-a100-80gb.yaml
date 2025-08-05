@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: inference-server
-        image: docker.io/vllm/vllm-openai:latest
+        image: docker.io/vllm/vllm-openai:v0.10.0
         resources:
           requests:
             ephemeral-storage: "30Gi"
