@@ -34,10 +34,7 @@ spec:
         - --model=$(MODEL_ID)
         - --tensor-parallel-size=1
         - --max-model-len=600
-        command:
-        - python3
-        - -m
-        - vllm.entrypoints.openai.api_server
+        command: ["python3", "-m", "vllm.entrypoints.openai.api_server"]
         env:
         - name: LD_LIBRARY_PATH
           value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64

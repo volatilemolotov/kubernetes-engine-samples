@@ -43,10 +43,8 @@ spec:
             memory: 1311Gi
             ephemeral-storage: 600Gi
             nvidia.com/gpu : 8
+        command: ["python3", "-m", "vllm.entrypoints.openai.api_server"]
         args:
-        - python3
-        - -m
-        - vllm.entrypoints.openai.api_server
         - --host=0.0.0.0
         - --port=7080
         - --swap-space=16

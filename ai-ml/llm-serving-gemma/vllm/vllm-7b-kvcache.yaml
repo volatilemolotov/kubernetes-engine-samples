@@ -35,10 +35,7 @@ spec:
         - --tensor-parallel-size=1
         - --kv-cache-dtype=fp8_e5m2
         - --max-model-len=1200
-        command:
-        - python3
-        - -m
-        - vllm.entrypoints.openai.api_server
+        command: ["python3", "-m", "vllm.entrypoints.openai.api_server"]
         env:
         - name: LD_LIBRARY_PATH
           value: ${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64        
